@@ -1,72 +1,422 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>♡Constantinos Christofides Personal Side</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Constantinos Christofides — CV</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      background: #f9f9f7;
+      color: #1a1a18;
+      min-height: 100vh;
+      padding: 3rem 1.5rem;
+    }
+
+    .cv {
+      max-width: 720px;
+      margin: 0 auto;
+      background: #ffffff;
+      border: 0.5px solid #e0dfd8;
+      border-radius: 16px;
+      padding: 3rem;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 2rem;
+      align-items: center;
+      padding-bottom: 2rem;
+      border-bottom: 0.5px solid #e0dfd8;
+      margin-bottom: 2rem;
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: #eef4fb;
+      border: 0.5px solid #c5d9ef;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 30px;
+      color: #185FA5;
+    }
+
+    .hero-text .role {
+      font-size: 11px;
+      font-weight: 500;
+      color: #185FA5;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .hero-text h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 30px;
+      font-weight: 400;
+      letter-spacing: -0.3px;
+      margin-bottom: 8px;
+      color: #1a1a18;
+    }
+
+    .hero-text .tagline {
+      font-size: 14px;
+      color: #666661;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta span {
+      font-size: 12px;
+      color: #888880;
+    }
+
+    .hero-meta a {
+      font-size: 12px;
+      color: #185FA5;
+      text-decoration: none;
+    }
+
+    /* Sections */
+    section { margin-bottom: 2rem; }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #888880;
+      margin-bottom: 1rem;
+      padding-bottom: 6px;
+      border-bottom: 0.5px solid #e0dfd8;
+    }
+
+    /* Entries */
+    .entry {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 1rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .entry-date {
+      font-size: 12px;
+      color: #888880;
+      padding-top: 2px;
+      white-space: nowrap;
+    }
+
+    .entry-body h3 {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 2px;
+      color: #1a1a18;
+    }
+
+    .entry-body .company {
+      font-size: 13px;
+      color: #888880;
+      margin-bottom: 6px;
+    }
+
+    .entry-body ul {
+      padding-left: 14px;
+      margin-top: 4px;
+    }
+
+    .entry-body ul li {
+      font-size: 12px;
+      color: #666661;
+      line-height: 1.7;
+      margin-bottom: 2px;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+    }
+
+    .skill-item {
+      background: #f4f3ef;
+      border-radius: 8px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .skill-name { font-size: 13px; font-weight: 500; }
+
+    .skill-dots { display: flex; gap: 4px; }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #d0cfc8;
+    }
+
+    .dot.filled { background: #185FA5; }
+
+    /* Certifications */
+    .cert-list { display: flex; flex-direction: column; gap: 10px; }
+
+    .cert-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: #444441;
+      line-height: 1.5;
+    }
+
+    .cert-badge {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #185FA5;
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+
+    /* Languages */
+    .lang-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .lang-tag {
+      font-size: 12px;
+      padding: 4px 14px;
+      border-radius: 99px;
+      background: #f4f3ef;
+      color: #666661;
+    }
+
+    /* Hobbies */
+    .hobbies { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .hobby-tag {
+      font-size: 12px;
+      padding: 4px 14px;
+      border-radius: 99px;
+      border: 0.5px solid #e0dfd8;
+      color: #666661;
+    }
+
+    /* Contact form */
+    .contact-form { display: flex; flex-direction: column; gap: 14px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .form-group { display: flex; flex-direction: column; gap: 5px; }
+
+    .form-group label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #888880;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      background: #f4f3ef;
+      border: 0.5px solid #e0dfd8;
+      border-radius: 8px;
+      padding: 9px 13px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: #1a1a18;
+      outline: none;
+      resize: none;
+      transition: border-color 0.15s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: #185FA5;
+    }
+
+    .form-group textarea { height: 90px; }
+
+    .submit-btn {
+      align-self: flex-start;
+      padding: 9px 26px;
+      background: #185FA5;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: background 0.15s;
+    }
+
+    .submit-btn:hover { background: #0c447c; }
+
+    /* Responsive */
+    @media (max-width: 560px) {
+      .cv { padding: 2rem 1.25rem; }
+      .hero { grid-template-columns: 80px 1fr; gap: 1.25rem; }
+      .avatar { width: 80px; height: 80px; font-size: 24px; }
+      .hero-text h1 { font-size: 22px; }
+      .entry { grid-template-columns: 1fr; gap: 0.25rem; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-<table cellspacing="20">
-    <tr>
-        <td>
+<div class="cv">
 
-        <img src="IMG_20200319_104846-modified.png" alt="My Profile Picture" width="200" height="200">
-        </td>
-        <td>
-        <h1>Constantinos Christofides</h1>
-        <p><em>Data Analyst in Nielseniq</em></p>
-        <p>Translating numbers and facts to inform strategic business decisions</p>
-        </td>
-    </tr>
-    <hr>
-</table>
-    <h3>Education</h3>
-    <ul>
-        <li><a href="https://www.ucy.ac.cy/en/">University of Cyprus </a></li>
-        <li><a href="https://www.surrey.ac.uk/">University of Surrey</a></li>
-    </ul>
-    <h3>Work Experince</h3>
-    <table>
-        <thead>
-        <tr>
-            <th>Dates</th>
-            <th>Work</th>
-        </tr>
+  <div class="hero">
+    <div class="avatar">CC</div>
+    <div class="hero-text">
+      <div class="role">Senior Insurance Analyst</div>
+      <h1>Constantinos Christofides</h1>
+      <p class="tagline">Translating numbers and facts to inform strategic business decisions</p>
+      <div class="hero-meta">
+        <span>Nicosia, Cyprus</span>
+        <span>+357 99838264</span>
+        <a href="mailto:cxzchris@gmail.com">cxzchris@gmail.com</a>
+      </div>
+    </div>
+  </div>
 
-        </thead>
-        <tr>
-           <td>2018-2019</td>
-            <td>Papetis Services Electrical Engineer</td>
-        </tr>
-        <tr>
-            <td>2020-Present</td>
-            <td>Nielseniq Data Analyst</td>
+  <section>
+    <div class="section-label">Education</div>
+    <div class="entry">
+      <div class="entry-date">Graduated 2018</div>
+      <div class="entry-body">
+        <h3>University of Surrey</h3>
+        <p class="company">MSc Biomedical Engineering (Merit) · Guildford, UK</p>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="entry-date">Graduated 2017</div>
+      <div class="entry-body">
+        <h3>University of Cyprus</h3>
+        <p class="company">BSc Electrical Engineering (2:1) · Nicosia, Cyprus</p>
+      </div>
+    </div>
+  </section>
 
-        </tr>
-    </table>
-    <h3>Skills</h3>
-    <table>
-        <tr>
-           <td>Python😁</td>
-            <td>★★★</td>
-        </tr>
-        <tr>
-            <td>Excel</td>
-            <td>★★★★★</td>
+  <section>
+    <div class="section-label">Work Experience</div>
+    <div class="entry">
+      <div class="entry-date">May 2023 – Present</div>
+      <div class="entry-body">
+        <h3>Senior Insurance Analyst</h3>
+        <p class="company">Trust Insurance Company · Nicosia, Cyprus</p>
+        <ul>
+          <li>Maintained complex Excel workbooks for actuarial reporting processing 50,000+ policy records for Solvency II compliance</li>
+          <li>Built automated reporting systems reducing manual data entry errors by 60% and processing time by 40%</li>
+          <li>Developed Python scripts to automate repetitive Excel tasks and performed statistical analysis for claims pricing optimization</li>
+        </ul>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="entry-date">Jan 2020 – May 2023</div>
+      <div class="entry-body">
+        <h3>Senior Data Analyst</h3>
+        <p class="company">NielsenIQ · Nicosia, Cyprus</p>
+        <ul>
+          <li>Built Excel models analyzing retail panel data across 10+ markets with advanced PivotTable configurations</li>
+          <li>Designed automated dashboards reducing false trend reporting by 35%</li>
+          <li>Generated executive reports with professional charts and data tables for stakeholder presentations</li>
+        </ul>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="entry-date">Oct 2018 – Jan 2020</div>
+      <div class="entry-body">
+        <h3>Field Service Engineer</h3>
+        <p class="company">Papaetis Services · Nicosia, Cyprus</p>
+        <ul>
+          <li>Maintained Excel-based equipment tracking systems and service logs for biomedical devices</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-        </tr>
+  <section>
+    <div class="section-label">Skills</div>
+    <div class="skills-grid">
+      <div class="skill-item"><span class="skill-name">Excel</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div></div>
+      <div class="skill-item"><span class="skill-name">VBA</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Python</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="skill-item"><span class="skill-name">SQL</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Power Query</span><div class="skill-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div></div></div>
+    </div>
+  </section>
 
-    </table>
-    <hr>
-    <h3>My hobbies</h3>
-    <ol>
-    <li>Cooking</li>
-        <li><a href="Check.html">Contact Me</a></li>
-        <li>GYm</li>
+  <section>
+    <div class="section-label">Certifications</div>
+    <div class="cert-list">
+      <div class="cert-item"><div class="cert-badge"></div><span>Google Data Analytics Professional Certificate</span></div>
+      <div class="cert-item"><div class="cert-badge"></div><span>Εξετάσεις ΠΒΑΚ — Βασικές Αρχές Ασφάλισης & Γενικού Κλάδου</span></div>
+      <div class="cert-item"><div class="cert-badge"></div><span>Reinsurance Certification</span></div>
+    </div>
+  </section>
 
-    </ol>
+  <section>
+    <div class="section-label">Languages</div>
+    <div class="lang-row">
+      <div class="lang-tag">Greek — Native</div>
+      <div class="lang-tag">English — Fluent</div>
+    </div>
+  </section>
 
+  <section>
+    <div class="section-label">Hobbies</div>
+    <div class="hobbies">
+      <div class="hobby-tag">Cooking</div>
+      <div class="hobby-tag">Gym</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-label">Contact</div>
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="John Smith">
+        </div>
+        <div class="form-group">
+          <label>Email or Phone</label>
+          <input type="text" placeholder="john@example.com">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Preferred Time</label>
+        <input type="text" placeholder="e.g. Weekdays after 3pm">
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="What would you like to discuss?"></textarea>
+      </div>
+      <button class="submit-btn">Send message</button>
+    </div>
+  </section>
+
+</div>
 </body>
 </html>
